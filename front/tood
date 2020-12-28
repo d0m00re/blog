@@ -1,0 +1,26 @@
+goald : create an article and show it 
+
+current feature : 
+1 - create an article with title, description and tag
+2 - view all article
+3 - show article with tag selection
+4 - find article zith tag
+7 - sort article with tag
+
+
+current dev : 
+
+
+future feature
+4 - use redux for storing tag
+5 - use eslint
+6 - use docker and docker compose
+8 - link article with graph
+9 - autosort link
+10 - account management with redux, jwt and bdd
+11 - deploy 
+12 - add image on article
+13 - add mise en form de text
+14 - like - share - comment article
+15 - add test on each routes
+16 -
