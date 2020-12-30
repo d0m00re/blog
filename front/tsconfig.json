@@ -1,11 +1,18 @@
 {
+  "extends": "./paths.json",
   "compilerOptions": {
-    "jsx": "react",
+    "jsx": "react-jsx",
     "target": "es5",
     "lib": [
       "dom",
       "dom.iterable",
-      "esnext"
+      "esnext",
+      "ES2015",
+      "ES2016",
+      "ES2017",
+      "ES2018",
+      "ES2019",
+      "ES2020"
     ],
     "allowJs": true,
     "skipLibCheck": true,
@@ -22,5 +29,8 @@
   },
   "include": [
     "src"
+  ],
+  "exclude": [
+    "node_modules"
   ]
 }

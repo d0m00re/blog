@@ -18,9 +18,7 @@ function App() {
     <>
       <ThemeProvider theme={theme}>
         <HeaderBar />
-        <GeneralLayout>
             <Routes />
-        </GeneralLayout>
       </ThemeProvider>
     </>
   );

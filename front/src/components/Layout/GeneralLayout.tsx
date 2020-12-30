@@ -6,7 +6,7 @@ interface Props {
 
 function GeneralLayout({children}: Props): ReactElement {
     return (
-        <div  style={{width : '80vw', margin : 'auto'}}>
+        <div  style={{width : '40vw', margin : 'auto'}}>
             {children}
         </div>
     )

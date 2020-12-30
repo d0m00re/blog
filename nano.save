@@ -1,0 +1,18 @@
+API ROUTE :
+* route pour sauvegarder une variable manuelle
+	https://dev.dametis.cloud/data/myVariables -> AJOUTER
+* route pour importer des donnees
+	https://dev.dametis.cloud/data/import
+
+	ajout :
+		(date + heure) + valeur
+
+	import depuis un fichier :
+		csv? excel? {traitement depuis le serveur}
+
+
+
+
+
+pourquooi sur la premiere iteration lors d un click sur une varaible, l'option de la query dans le store 'est pas set???
+Par default c est min et on a set ca nul part ...

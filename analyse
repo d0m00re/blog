@@ -1,0 +1,41 @@
+VariableChip
+                  variable={content}
+                  className={classes.variableChip}
+                  onDelete={() => handleDelete(i + 1)}
+                  option={noMaths ? null : t(`global:operator.${option ?? `MEAN`}`)}
+                  onOptionChange={() => handleOptionChange(i, option)}
+                />
+
+
+  const handleOptionChange = (index, option) => {
+    let tabIndex = operatorOptions.indexOf(option) === -1 ? 0 : operatorOptions.indexOf(option);
+    tabIndex = tabIndex > -1 && tabIndex < operatorOptions.length - 1 && tabIndex + 1;
+    const newQuery = [...query];
+    newQuery[index].option = operatorOptions[tabIndex];
+    dispatch(updateCalculation(newQuery));
+  };
+
+
+
+stoquage dans le store:
+
+operatorOption:
+
+0(pin): "MEAN"
+1(pin): "DELTA"
+2(pin): "MIN"
+3(pin): "MAX"
+4(pin): "LAST"
+5(pin): "INTEGRAL"
+
+
+vnc mega bar :
+modifier la fonnction handleOptionChange
+
+Se baser sur une props permettant de selectionnner
+
+on va passer une prop specialOperator : array of string
+
+tabOperatorOption= [
+	'DELTA'
+]

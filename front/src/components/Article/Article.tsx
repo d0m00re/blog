@@ -39,7 +39,7 @@ function ArticleCard({article}: Props): ReactElement {
           <CardActionArea>
             <CardMedia
               className={classes.media}
-              image= {article.img}
+              image= {'http://localhost:3042/'+article.img}
               title="Contemplative Reptile"
             />
             <CardContent>

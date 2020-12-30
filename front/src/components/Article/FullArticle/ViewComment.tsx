@@ -18,13 +18,8 @@ function ViewComment({comments}: Props): ReactElement {
         <div>
             <Typography variant='h3'>Comment:</Typography>
             {
-                comments !== null && comments.map((elem: any) => {
-                
-                return (
-                    <Paper elevation={3} key={elem._id}>
-                        <Typography variant='body1'>{elem.comment}</Typography>
-                    </Paper>);
-                })
+                comments !== null && comments.map((elem: any) => <Typography variant='body1' key={elem._id}>{elem.comment}</Typography>
+            )
             }
         </div>
     )

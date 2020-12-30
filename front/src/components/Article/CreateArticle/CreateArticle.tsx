@@ -7,19 +7,33 @@ import Grid from '@material-ui/core/Grid'
 import useCreateArticleStyle from './CreateArticle.styles';
 import axios from 'axios';
 import MultyTagSelector from './../../TagSelector/MultyTagSelector';
+import GeneralLayout from './../../Layout/GeneralLayout'
 
 type TFormData = {
     title: string,
     tag: string[],
     description: string,
     img: any
-} 
+}
 
 interface HTMLInputEvent extends Event {
     target: HTMLInputElement & EventTarget;
 }
 
 const CreateArticle = () => {
+
+    const [imgPreview, setImgPreview] = useState<{ imgPreview: string, imgFile: any }>({ imgPreview: '', imgFile: null })
+
+    const handlePreviewLoadImg = (e: any) => {
+        let image_as_base64 = URL.createObjectURL(e.target.files[0])
+        let image_as_files = e.target.files[0];
+
+        setImgPreview({
+            imgPreview: image_as_base64,
+            imgFile: image_as_files,
+        })
+    }
+
     const classe = useCreateArticleStyle();
 
     const [allTag, setAllTag]= useState<string[]>([]);
@@ -77,16 +91,43 @@ const CreateArticle = () => {
             })
     }
 
+    const handleSubmitArticle = () => {
+        let myFormData = new FormData();
+       
+         myFormData.append('file', imgPreview.imgFile);
+         myFormData.append('tag', JSON.stringify(formData.tag));
+         myFormData.append('description', formData.description);
+        myFormData.append('title', formData.title);
+
+        console.log('fprm data send:');
+        console.log(myFormData);
+        
+        
+
+        axios.post('http://localhost:3042/article', myFormData)
+            .then(res => {
+                console.log(`Success` + res.statusText);
+            })
+            .catch(err => {
+                console.log('bordel d erreur : ');
+                
+                console.log(err);
+            })
+
+    }
+
     return (
-        <div>
+        <GeneralLayout>
             <Typographie variant='h2'>Write an article</Typographie>
             <Paper className={classe.paper__padding}>
                 <Grid direction='column' container>
                     <Typographie>Cover image</Typographie>
+                    <img src={imgPreview.imgPreview} />
+
                     <Textfield
                         name='img'
                         type='file'
-                        onChange={handleFormImg}
+                        onChange={handlePreviewLoadImg}
                        //value={formData.img}
                     />
                     {/* <Button>Add a cover image</Button> */}
@@ -121,9 +162,9 @@ const CreateArticle = () => {
                 </Grid>
             </Paper>
 
-            <Button onClick={handleSaveArticle}>Publish</Button>
+            <Button onClick={handleSubmitArticle}>Publish</Button>
             <Button>Save Draft</Button>
-        </div>
+        </GeneralLayout>
     )
 }
 
